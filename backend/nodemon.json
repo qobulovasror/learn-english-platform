@@ -1,0 +1,6 @@
+{
+  "exec": "python main.py",
+  "ext": "py",
+  "watch": ["."],
+  "ignore": ["*.txt", "*.md", "venv/*"]
+}
