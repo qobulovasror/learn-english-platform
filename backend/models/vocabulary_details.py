@@ -1,9 +1,10 @@
-from sqlalchemy import Column, Integer, String, Enum, ForeignKey, JSONB
+from sqlalchemy import Column, Integer, String, ForeignKey, Enum as SQLAlchemyEnum
+from sqlalchemy.dialects.postgresql import JSONB
 from models.base import Base
-from sqlalchemy.types import Enum as SQLAlchemyEnum
 from sqlalchemy.orm import relationship
+from enum import Enum
 
-class PartOfSpeech(SQLAlchemyEnum):
+class PartOfSpeech(str, Enum):
     NOUN = "noun"
     VERB = "verb"
     ADJECTIVE = "adjective"
@@ -13,7 +14,7 @@ class PartOfSpeech(SQLAlchemyEnum):
     PRONOUN = "pronoun"
     INTERJECTION = "interjection"
 
-class Level(SQLAlchemyEnum):
+class Level(str, Enum):
     A1 = "A1"
     A2 = "A2"
     B1 = "B1"
@@ -32,5 +33,5 @@ class VocabularyDetails(Base):
     antonyms_ids = Column(JSONB, nullable=True)
     ipa = Column(String, nullable=True)
     audio_url = Column(String, nullable=True)
-    level = Column(Enum(Level), nullable=True)
-    part_of_speech = Column(Enum(PartOfSpeech), nullable=True)
+    level = Column(SQLAlchemyEnum(Level), nullable=True)
+    part_of_speech = Column(SQLAlchemyEnum(PartOfSpeech), nullable=True)

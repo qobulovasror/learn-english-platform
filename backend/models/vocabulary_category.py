@@ -1,6 +1,5 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String
 from models.base import Base
-from datetime import datetime, UTC
 from sqlalchemy.orm import relationship
 
 class VocabularyCategory(Base):

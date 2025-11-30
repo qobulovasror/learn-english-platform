@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, DateTime, JSONB
+from sqlalchemy import Column, Integer, DateTime
+from sqlalchemy.dialects.postgresql import JSONB
 from models.base import Base
 from datetime import datetime, UTC
 from sqlalchemy.orm import relationship
