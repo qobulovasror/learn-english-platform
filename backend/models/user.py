@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Enum as SQLAlchemyEnum
+from sqlalchemy import Column, Integer, String, DateTime, Enum as SQLAlchemyEnum, Date
 from sqlalchemy.dialects.postgresql import JSONB
 from models.base import Base
 from datetime import datetime, UTC
@@ -12,9 +12,14 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    telegram_id = Column(String, unique=True, index=True, nullable=True)
+    telegram_id = Column(String, unique=True, index=True, nullable=False)
     name = Column(String, nullable=False)
     role = Column(SQLAlchemyEnum(UserRole), nullable=False, default=UserRole.USER)
     info = Column(JSONB, nullable=True)
+    birth_date = Column(Date, nullable=True)
+    phone_number = Column(String, nullable=True)
+    address = Column(String, nullable=True)
+    gender = Column(String, nullable=True)
+    email = Column(String, unique=True, index=True, nullable=True)
     created_at = Column(DateTime(timezone=True), default=datetime.now(UTC))
     updated_at = Column(DateTime(timezone=True), default=datetime.now(UTC), onupdate=datetime.now(UTC))

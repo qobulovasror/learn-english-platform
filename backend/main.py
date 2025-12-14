@@ -44,7 +44,7 @@ def read_root():
 
 @app.get("/health")
 def health_check():
-    return {"message": "I am ok, thanks! 😊", "status": "OK"}
+    return {"message": "I am ok, thanks! 😊", "status": "ok"}
 
 if __name__ == "__main__":
     import uvicorn
