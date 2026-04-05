@@ -9,7 +9,7 @@ router = APIRouter()
 logger = logging.getLogger("api.user")
 
 
-# ================= User account management endpoints =================
+# ================= User details endpoints =================
 # get user by user id
 # @router.get("/users/{user_id}", response_model=UserOut, dependencies=[Depends(get_current_user)])
 @router.get("/users/{user_id}", response_model=UserOut)

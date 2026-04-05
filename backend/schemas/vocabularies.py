@@ -17,3 +17,28 @@ class VocabularyOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class VocabularyCategoryCreate(BaseModel):
+    name: str
+
+class VocabularyCategoryOut(BaseModel):
+    id: int
+    name: str
+    created_at: datetime
+    vocabularies: list[VocabularyOut]
+    class Config:
+        from_attributes = True
+class VocabularyDetailsCreate(BaseModel):
+    vocabulary_id: int
+    details: str
+
+class VocabularyDetailsOut(BaseModel):
+    id: int
+    vocabulary_id: int
+    details: str
+    created_at: datetime
+    updated_at: datetime
+
+    class Config:
+        from_attributes = True
